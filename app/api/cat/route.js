@@ -5,11 +5,11 @@ export async function GET() {
   try {
     const db = await createConnection();
     const sql = "select * from category";
-    const [category, fields] = await db.query(sql);
+    const [category] = await db.query(sql);
 
     return NextResponse.json(category);
   } catch (error) {
-    // console.log("errr", error);
-    // return NextResponse.json({ error: error.message });
+    console.log("errr", error);
+    return NextResponse.json({ error: error.message });
   }
 }
